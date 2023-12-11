@@ -1,5 +1,4 @@
-node_modules
-*/dest/
+node_modules/
 package-lock.json
 *.js
 !jest.config.js
