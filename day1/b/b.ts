@@ -23,21 +23,15 @@ export function getCalibrationValue(line_: string): number {
 
 function replace(s: string) {
   return s
-    .replace("one", "o1e")
-    .replace("two", "t2e")
-    .replace("three", "t3e")
-    .replace("four", "f4r")
-    .replace("five", "f5e")
-    .replace("six", "s6x")
-    .replace("seven", "s7n")
-    .replace("eight", "e8t")
-    .replace("nine", "n9e");
-}
-
-function firstAndLastSum(l: number[]): number {
-  if (l.length === 0) return 0;
-  if (l.length === 1) return l[0] * 2;
-  return l[0] + l[l.length - 1];
+    .replace(/one/g, "o1e")
+    .replace(/two/g, "t2e")
+    .replace(/three/g, "t3e")
+    .replace(/four/g, "f4r")
+    .replace(/five/g, "f5e")
+    .replace(/six/g, "s6x")
+    .replace(/seven/g, "s7n")
+    .replace(/eight/g, "e8t")
+    .replace(/nine/g, "n9e");
 }
 
 if (require.main === module) {
