@@ -44,18 +44,26 @@ if (require.main === module) {
   const captureBlue = captureColor("blue");
   const captureAnyColor = either(captureRed, captureGreen, captureBlue);
 
-  console.log(captureBlue("2 blue"));
-
-  const captureColors = sequence(
+  const captureHandful = sequence(
     space,
     captureAnyColor,
-    optional(string(", ")),
-    optional(captureAnyColor),
-    optional(string(", ")),
-    optional(captureAnyColor),
+    optional(
+      nOrMore(
+        1,
+        sequence(
+          string(", "),
+          captureAnyColor
+        )
+      )
+    ),
     char(";")
   );
-  console.log(captureColors(" 9 green, 5 red;"));
-  console.log(captureColors(" 9 green;"));
-  console.log(captureColors(" 9 red, 5 green, 3 blue;"));
+
+  // Virker fint:
+  console.log(captureHandful(" 9 green, 5 red;"));
+  console.log(captureHandful(" 9 green;"));
+  console.log(captureHandful(" 9 red, 5 green, 3 blue;"));
+
+  // Game 99: 2 green, 9 red; 8 red, 4 green, 9 blue; 8 blue, 13 red; 10 green, 8 blue, 6 red; 11 green, 2 red, 13 blue
+  capture
 }
